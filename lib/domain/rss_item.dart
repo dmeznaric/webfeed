@@ -25,6 +25,7 @@ class RssItem {
   final RssEnclosure enclosure;
   final DublinCore dc;
   final RssItemItunes itunes;
+  final String image;
 
   RssItem({
     this.title,
@@ -41,6 +42,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
+    this.image,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -61,6 +63,7 @@ class RssItem {
       enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
+      image: findElementOrNull(element, "image")?.text,
     );
   }
 }
